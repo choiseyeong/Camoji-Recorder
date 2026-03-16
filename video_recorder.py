@@ -28,7 +28,7 @@ fourcc = cv.VideoWriter_fourcc(*'XVID')
 
 def create_writer():
     now = datetime.now()
-    filename = now.strftime("%y-%m-%d_%H-%M-%S") + ".avi"
+    filename = now.strftime("%y-%m-%d_%H-%M-%S") + ".mp4"
     return cv.VideoWriter(filename, fourcc, 20.0, (width, height))
 
 out = None
