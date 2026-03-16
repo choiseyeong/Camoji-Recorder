@@ -37,9 +37,9 @@ out = None
 # 필터 이미지 로드
 # -------------------------
 
-filter1 = cv.imread("filter1.png", cv.IMREAD_UNCHANGED)
-filter2 = cv.imread("filter2.png", cv.IMREAD_UNCHANGED)
-filter3 = cv.imread("filter3.png", cv.IMREAD_UNCHANGED)
+filter1 = cv.imread("filter/filter1.png", cv.IMREAD_UNCHANGED)
+filter2 = cv.imread("filter/filter2.png", cv.IMREAD_UNCHANGED)
+filter3 = cv.imread("filter/filter3.png", cv.IMREAD_UNCHANGED)
 
 if filter1 is not None:
     filter1 = cv.resize(filter1, (width, height))
@@ -54,12 +54,12 @@ if filter3 is not None:
 # 버튼 이미지 로드
 # -------------------------
 
-btn_filter1 = cv.imread("btn_filter1.png", cv.IMREAD_UNCHANGED)
-btn_filter2 = cv.imread("btn_filter2.png", cv.IMREAD_UNCHANGED)
-btn_filter3 = cv.imread("btn_filter3.png", cv.IMREAD_UNCHANGED)
+btn_filter1 = cv.imread("img/btn_filter1.png", cv.IMREAD_UNCHANGED)
+btn_filter2 = cv.imread("img/btn_filter2.png", cv.IMREAD_UNCHANGED)
+btn_filter3 = cv.imread("img/btn_filter3.png", cv.IMREAD_UNCHANGED)
 
-btn_bright_up = cv.imread("btn_bright_up.png", cv.IMREAD_UNCHANGED)
-btn_bright_down = cv.imread("btn_bright_down.png", cv.IMREAD_UNCHANGED)
+btn_bright_up = cv.imread("img/btn_bright_up.png", cv.IMREAD_UNCHANGED)
+btn_bright_down = cv.imread("img/btn_bright_down.png", cv.IMREAD_UNCHANGED)
 
 btn_filter1 = cv.resize(btn_filter1,(60,60))
 btn_filter2 = cv.resize(btn_filter2,(60,60))
@@ -92,15 +92,15 @@ def mouse_click(event, x, y, flags, param):
 
         # filter1
         if 20 < x < 80 and height-100 < y < height-40:
-            current_filter = 1
+            current_filter = 0 if current_filter == 1 else 1
 
         # filter2
         elif 100 < x < 160 and height-100 < y < height-40:
-            current_filter = 2
+            current_filter = 0 if current_filter == 2 else 2
 
         # filter3
         elif 180 < x < 240 and height-100 < y < height-40:
-            current_filter = 3
+            current_filter = 0 if current_filter == 3 else 3
 
         # 밝기 증가
         elif width-160 < x < width-100 and height-100 < y < height-40:
@@ -199,6 +199,13 @@ while True:
 
     else:
 
+        cv.putText(frame,
+                   "PREVIEW",
+                   (20,30),
+                   cv.FONT_HERSHEY_SIMPLEX,
+                   0.8,
+                   (128,128,128),
+                   4)
         cv.putText(frame,
                    "PREVIEW",
                    (20,30),

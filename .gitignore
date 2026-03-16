@@ -1,3 +1,6 @@
+# Claude worktrees
+.claude/worktrees/
+
 # OpenCV recorded videos
 *.mp4
 *.avi
