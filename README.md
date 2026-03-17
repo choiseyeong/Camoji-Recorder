@@ -2,7 +2,7 @@
 
 # 1. Program Overview (프로그램 개요)
 > ## Camoji = 'Cam'era📷 + Em'oji'😉
- Python의 OpenCV를 이용한 실시간 카메라 필터 및 영상 녹화 프로그램입니다.
+ Python의 OpenCV를 이용한 실시간 카메라 필터 및 영상 녹화 프로그램입니다.<br>
  직접 만든 필터가 적용된 영상 파일을 만들고자 제작되었습니다!
 
 - 이모지 필터 오버레이
@@ -44,7 +44,8 @@ OpenCV의 convertScaleAbs 함수를 활용하여 매 프레임마다 밝기 �
 <img width="421" height="208" alt="Image" src="https://github.com/user-attachments/assets/1bc2cbcf-6f21-42da-9c8a-86d64a166a12" />
 
 Record 모드로 전환되어 영상 저장이 시작될 때, 파일명이 자동으로 생성됩니다.<br>
-datetime 모듈을 사용하여 녹화 시작 시점의 날짜와 시각을 YY-MM-DD_HH-MM-SS.mp4 형식으로 파일명에 기록합니다.<br>
+datetime 모듈을 사용하여 녹화 시작 시점의 날짜와 시각을<br>
+YY-MM-DD_HH-MM-SS.mp4 형식으로 파일명에 기록합니다.<br>
 예를 들어 2026년 3월 16일 오후 2시 30분에 녹화를 시작하면 26-03-16_14-30-00.mp4 파일이 생성됩니다.
 
 # 3. Requirements (필요 라이브러리)
@@ -64,9 +65,10 @@ datetime 모듈을 사용하여 녹화 시작 시점의 날짜와 시각을 YY
 frame[y1:y2, x1:x2] = btn_filter1
 ```
 
-이 코드는 이미지를 그냥 복사하게 하기 때문에 PNG의 투명 배경이 픽셀로 복사되어서 (0,0,0)의 검은 화면으로 보인 것이었습니다.
+이 코드는 이미지를 그냥 복사하게 하기 때문에<br>
+PNG의 투명 배경이 픽셀로 복사되어서 (0,0,0)의 검은 화면으로 보인 것이었습니다.
 
-해결
+#### 해결 방법
 
 먼저 이미지를 알파채널과 함께 불러왔습니다.
 
@@ -96,17 +98,20 @@ overlay_png(frame, btn_bright_up, width-160, height-100)
 overlay_png(frame, btn_bright_down, width-80, height-100)
 ```
 
-PNG의 4번째 채널인 알파 채널(투명도)을 마스크로 사용하는 overplay 함수에 프레임을 전달했습니다. overlay 함수에서는 투명도 값에 따라 배경과 버튼을 계산하여 합성하는 과정을 거칩니다.
+PNG의 4번째 채널인 알파 채널(투명도)을 마스크로 사용하는 overplay 함수에 프레임을 전달했습니다.<br>
+overlay 함수에서는 투명도 값에 따라 배경과 버튼을 계산하여 합성하는 과정을 거칩니다.
 
 ### (2) Preview 모드에서도 영상이 저장되는 문제
 
-초기에 카메라가 Preview 모드일 때도 영상 파일이 저장되는 문제가 있었습니다. 아래의 코드 때문에 프로그램 시작 시 VideoWriter 객체가 생성되어, 녹화 여부와 관계없이 프레임이 파일로 기록된 것이었습니다.
+초기에 카메라가 Preview 모드일 때도 영상 파일이 저장되는 문제가 있었습니다.<br>
+아래의 코드 때문에 프로그램 시작 시 VideoWriter 객체가 생성되어,<br>
+녹화 여부와 관계없이 프레임이 파일로 기록된 것이었습니다.
 
 ```python
 out = create_writer()
 ```
 
-해결 방법
+#### 해결 방법
 
 ```python
 # 초기 상태에서는 writer를 생성 않고
