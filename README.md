@@ -2,7 +2,8 @@
 
 # 1. Program Overview (프로그램 개요)
 > ## Camoji = 'Cam'era📷 + Em'oji'😉
- Python의 OpenCV를 이용한 실시간 카메라 필터 및 영상 녹화 프로그램입니다. 
+ Python의 OpenCV를 이용한 실시간 카메라 필터 및 영상 녹화 프로그램입니다.
+ 직접 만든 필터가 적용된 영상 파일을 만들고자 제작되었습니다!
 
 - 이모지 필터 오버레이
 - 밝기 UP or DOWN
@@ -15,18 +16,36 @@
 # 2. Features and Demo (기능과 데모)
 
 ### (1) Preview 혹은 Record 모드 전환
-Space 키를 누르면 두 모드 사이를 전환할 수 있습니다. Preview 모드에서는 카메라 화면이 실시간으로 표시되지만 영상 파일은 저장되지 않습니다. Record 모드로 전환하면 카메라 프레임이 영상 파일로 저장되기 시작합니다. ESC 키를 누르면 프로그램이 종료되고, 녹화가 진행 중인 경우 함께 종료됩니다.
+![Image](https://github.com/user-attachments/assets/eaabece9-a749-4718-84cb-ac0ca5f7d434)
+
+Space 키를 누르면 두 모드 사이를 전환할 수 있습니다.<br>
+Preview 모드에서는 카메라 화면이 실시간으로 표시되지만 영상 파일은 저장되지 않습니다.<br>
+Record 모드로 전환하면 카메라 프레임이 영상 파일로 저장되기 시작합니다.<br>
+ESC 키를 누르면 프로그램이 종료되고, 녹화가 진행 중인 경우 함께 종료됩니다.
+
 ### (2) 3가지 이모지 필터
-카메라 화면 위에 적용할 수 있는 3가지 이모지 스타일의 오버레이 필터를 제작했습니다! 각 필터는 투명 배경의 PNG 이미지를 이용하여 카메라 프레임 위에 합성되는 방식으로 구현되었습니다.
+![Image](https://github.com/user-attachments/assets/3f7fc56b-c866-433b-8ffc-822aa179fb38)
+
+카메라 화면 위에 적용할 수 있는 3가지 이모지 스타일의 오버레이 필터를 제작했습니다!<br>
+각 필터는 투명 배경의 PNG 이미지를 이용하여 카메라 프레임 위에 합성되는 방식으로 구현되었습니다.
+
 - Sunny Lime: 🌴 🫧 🍋 🍋‍🟩 💚
 - Blue Splash: 🪼 🐟 💦 🐬 🐳
 - Teddy Snack: 🍪 🥨 🤎 ☕ 🧸
 
 ### (3) 밝기 Up & Down 기능
-화면 우측 하단의 버튼을 클릭하여 밝기를 조절할 수 있습니다. Up 버튼을 누를 때마다 밝기가 20씩 증가하고, Down 버튼을 누를 때마다 20씩 감소합니다. OpenCV의 convertScaleAbs 함수를 활용하여 매 프레임마다 밝기 값이 실시간으로 반영됩니다.
+![Image](https://github.com/user-attachments/assets/af05c4d2-76ab-4da8-af97-262f0e757f16)
+
+화면 우측 하단의 버튼을 클릭하여 밝기를 조절할 수 있습니다.<br>
+Up 버튼을 누를 때마다 밝기가 20씩 증가하고, Down 버튼을 누를 때마다 20씩 감소합니다.<br>
+OpenCV의 convertScaleAbs 함수를 활용하여 매 프레임마다 밝기 값이 실시간으로 반영됩니다.
 
 ### (4) 파일명에 날짜와 시각 기록
-Record 모드로 전환되어 영상 저장이 시작될 때, 파일명이 자동으로 생성됩니다. datetime 모듈을 사용하여 녹화 시작 시점의 날짜와 시각을 YY-MM-DD_HH-MM-SS.mp4 형식으로 파일명에 기록합니다. 예를 들어 2026년 3월 16일 오후 2시 30분에 녹화를 시작하면 26-03-16_14-30-00.mp4 파일이 생성됩니다.
+<img width="421" height="208" alt="Image" src="https://github.com/user-attachments/assets/1bc2cbcf-6f21-42da-9c8a-86d64a166a12" />
+
+Record 모드로 전환되어 영상 저장이 시작될 때, 파일명이 자동으로 생성됩니다.<br>
+datetime 모듈을 사용하여 녹화 시작 시점의 날짜와 시각을 YY-MM-DD_HH-MM-SS.mp4 형식으로 파일명에 기록합니다.<br>
+예를 들어 2026년 3월 16일 오후 2시 30분에 녹화를 시작하면 26-03-16_14-30-00.mp4 파일이 생성됩니다.
 
 # 3. Requirements (필요 라이브러리)
 * Python 3.x
